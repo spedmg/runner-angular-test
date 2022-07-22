@@ -1,0 +1,28 @@
+<form class="search-form">
+  <mat-form-field class="search-form-field" appearance="fill">
+    <mat-label>Search Movie Titles</mat-label>
+    <input type="text"
+      placeholder="Select option"
+      aria-label="Number"
+      matInput
+      [formControl]="searchControl"
+      [matAutocomplete]="auto">
+    <mat-autocomplete 
+      autoActiveFirstOption 
+      #auto="matAutocomplete" 
+      (optionSelected)="onSelection($event)"
+      [showPanel]="false">
+    <mat-option *ngFor="let title of filteredTitles | async" [value]="title.name">
+      {{title.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+</form>
+<mat-card *ngFor="let item of selected">
+  <mat-card-actions (click)="removeTitle(item)">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="cancel"></mat-icon>
+  </mat-card-actions>
+  <small>{{item.name}}</small><br>
+  <span class="fullname">{{item.full_name}} </span>
+</mat-card>
+
