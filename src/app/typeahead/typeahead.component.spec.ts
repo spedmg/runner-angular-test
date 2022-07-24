@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TypeaheadComponent } from './typeahead.component';
+import {TypeaheadComponent} from './typeahead.component';
+import {TitleService} from '../data/title.service';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 describe('TypeaheadComponent', () => {
   let component: TypeaheadComponent;
@@ -8,9 +10,11 @@ describe('TypeaheadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypeaheadComponent ]
+      imports: [MatAutocompleteModule],
+      declarations: [TypeaheadComponent],
+      providers: [TitleService]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TypeaheadComponent);
     component = fixture.componentInstance;
