@@ -18,7 +18,7 @@
   </mat-autocomplete>
 </mat-form-field>
 </form>
-<mat-card *ngFor="let item of selected">
+<mat-card *ngFor="let item of selected" class="selected-results mat-elevation-z2">
   <mat-card-actions (click)="removeTitle(item)">
     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="cancel"></mat-icon>
   </mat-card-actions>

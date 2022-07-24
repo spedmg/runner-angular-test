@@ -26,8 +26,9 @@ small {
     display: inline-block;
     margin-bottom: 0.5rem;
     line-height: 1.25;
+    font-size: .8rem;
 }
 span.fullname {
-    color: #3f51b5;
-    font-size: 16px;
+    color: #cd0101;
+    font-size: 18px;
 }
