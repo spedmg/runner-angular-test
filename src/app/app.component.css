@@ -291,3 +291,8 @@ svg#clouds {
     visibility: hidden;
   }
 }
+
+.solution {
+  margin: 1rem;
+  width: 90%;
+}

@@ -1,0 +1,31 @@
+<!-- Custom Typeahead Form Field -->
+<form (submit)="save()" class="mt-2">
+  <!-- Form Field -->
+  <mat-form-field class="search">
+    <mat-label>Search a Title</mat-label>
+    <!-- Input Text -->
+    <mat-icon matPrefix>search</mat-icon>
+    <input type="text"
+           matInput
+           [formControl]="title"
+           [matAutocomplete]="auto"
+           [matChipInputFor]="chipList">
+    <!-- Autocomplete option -->
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let title of filteredTitles | async" (onSelectionChange)="updateSelection(title)">
+        {{title.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <!-- Display selected options -->
+  <mat-chip-list #chipList aria-label="Title selection" class="mt-2">
+    <mat-chip *ngFor="let title of selection; let i = index" (removed)="removeTitle(i)" class="text-sm">
+      {{title.name}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+  </mat-chip-list>
+  <!-- Submit button -->
+  <button class="mt-2" mat-raised-button type="submit" color="primary">Submit Selection</button>
+</form>
