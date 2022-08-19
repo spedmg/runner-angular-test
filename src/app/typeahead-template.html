@@ -1,0 +1,15 @@
+<input [value]="search2"
+       ngxTypeahead
+       [taList]="titles"
+       [taItemTpl]="myTemp"
+       (taSelected)="selectedTempStatic($event)">
+
+
+<ng-template #myTemp let-item>
+  <div class="item-name">
+    {{item.result.name}}
+  </div>
+  <div class="item-desc">
+    {{item.result.external_id}}
+  </div>
+</ng-template>
