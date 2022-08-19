@@ -291,3 +291,7 @@ svg#clouds {
     visibility: hidden;
   }
 }
+
+.form-control { width: 300px; }
+
+

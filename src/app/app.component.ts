@@ -17,3 +17,6 @@ export class AppComponent {
     'This mimics a form element in our application where users assign title metadata to assets, so if you would like to build something that replicates a form submission, feel free to come up with your own solution to how it "saves" the data.'
   ];
 }
+
+
+
