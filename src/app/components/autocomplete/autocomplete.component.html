@@ -1,0 +1,40 @@
+<mat-card [formGroup]="titlesForm">
+  <mat-card-header>
+      <h3>{{titlesForm.valid && isSaved ? fullTitles.length + ' title(s) saved!' : ' '}}</h3>
+  </mat-card-header>
+  <mat-form-field class="example-chip-list" appearance="fill">
+      <mat-label>Titles</mat-label>
+      <input
+          placeholder="New Title..."
+          #titleInput
+          formControlName="titleCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+      <mat-card-content>
+        <mat-chip-list #chipList formControlName="selectedTitles" aria-label="Title selection">
+          <mat-chip
+            *ngFor="let fullTitle of fullTitles"
+            (removed)="remove(fullTitle)">
+            {{fullTitle}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <ng-container *ngFor="let title of filteredTitles | async">
+              <mat-option *ngIf="!titles.includes(title)" [value]="title">
+                {{title}}
+              </mat-option>
+            </ng-container>
+          </mat-autocomplete>
+          <mat-error *ngIf="titlesForm.controls['selectedTitles'].touched && titlesForm.controls['selectedTitles'].hasError('required')">
+            Please select a Title
+        </mat-error>
+        </mat-chip-list>
+      </mat-card-content>
+  </mat-form-field>
+  <mat-card-actions align="end">
+    <button mat-flat-button color="primary" (click)="save()">Save</button>
+  </mat-card-actions>
+</mat-card>
